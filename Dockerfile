@@ -1,6 +1,6 @@
 FROM centos:7
 RUN yum install -y http://repo1.sea.innoscale.net/remi/enterprise/remi-release-7.rpm \
-  && yum install -y php71-php-fpm php71-php-cli php71-php-pdo php71-php-mysqlnd php71-php-gd php71-php-mbstring php71-php-xml php71-php-json php71-php-pecl-zip \
+  && yum install -y php71-php-fpm php71-php-cli php71-php-pdo php71-php-mysqlnd php71-php-gd php71-php-mbstring php71-php-xml php71-php-json php71-php-pecl-zip php71-php-pecl-mongodb\
   && yum install -y git unzip \
   && ln -s /usr/bin/php71 /usr/bin/php \
   && ln -s /opt/remi/php71/root/usr/sbin/php-fpm /usr/sbin/php-fpm \
@@ -21,7 +21,6 @@ RUN yum install -y http://repo1.sea.innoscale.net/remi/enterprise/remi-release-7
   && php composer-setup.php \
   && mv composer.phar /usr/bin/composer \
   && rm -f composer-setup.php \
-  && yum install php-pear php-devel
   
 EXPOSE 9000
 
