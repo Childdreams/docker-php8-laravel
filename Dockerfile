@@ -1,6 +1,6 @@
 FROM centos:7
 RUN yum install -y http://repo1.sea.innoscale.net/remi/enterprise/remi-release-7.rpm \
-  && yum install -y php73-php-fpm php73-php-cli php73-php-pdo php73-php-mysqlnd php73-php-gd php73-php-mbstring php73-php-xml php73-php-json php73-php-pecl-zip php73-php-pecl-mongodb php73-bcmath \
+  && yum install -y php73-php-fpm php73-php-cli php73-php-pdo php73-php-mysqlnd php73-php-gd php73-php-mbstring php73-php-xml php73-php-json php73-php-pecl-zip php73-php-pecl-mongodb php73-php-bcmath \
   && yum install -y git unzip \
   && ln -s /usr/bin/php73 /usr/bin/php \
   && ln -s /opt/remi/php73/root/usr/sbin/php-fpm /usr/sbin/php-fpm \
