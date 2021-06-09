@@ -2,6 +2,7 @@ FROM centos:7
 RUN yum install -y http://repo1.sea.innoscale.net/remi/enterprise/remi-release-7.rpm \
   && yum install -y php73-php-fpm php73-php-cli php73-php-pdo php73-php-mysqlnd php73-php-gd php73-php-mbstring php73-php-xml php73-php-json php73-php-pecl-zip php73-php-pecl-mongodb php73-php-bcmath \
   && yum install -y git unzip \
+  && yum install -y wget \
   && ln -s /usr/bin/php73 /usr/bin/php \
   && ln -s /opt/remi/php73/root/usr/sbin/php-fpm /usr/sbin/php-fpm \
   && yum clean all \
@@ -17,10 +18,7 @@ RUN yum install -y http://repo1.sea.innoscale.net/remi/enterprise/remi-release-7
   && sed -i 's/post_max_size = 8M/post_max_size = 128M/' /etc/opt/remi/php73/php.ini \
   && sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 128M/' /etc/opt/remi/php73/php.ini \
   && sed -i 's/memory_limit = 128M/memory_limit = 1024M/' /etc/opt/remi/php73/php.ini \
-  && php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
-  && php composer-setup.php \
-  && mv composer.phar /usr/bin/composer \
-  && rm -f composer-setup.php
+  && wget https://raw.githubusercontent.com/composer/getcomposer.org/76a7060ccb93902cd7576b67264ad91c8a2700e2/web/installer -O - -q | php -- --quiet
 
 EXPOSE 9000
 
