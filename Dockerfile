@@ -18,7 +18,8 @@ RUN yum install -y http://repo1.sea.innoscale.net/remi/enterprise/remi-release-7
   && sed -i 's/post_max_size = 8M/post_max_size = 128M/' /etc/opt/remi/php73/php.ini \
   && sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 128M/' /etc/opt/remi/php73/php.ini \
   && sed -i 's/memory_limit = 128M/memory_limit = 1024M/' /etc/opt/remi/php73/php.ini \
-  && wget https://raw.githubusercontent.com/composer/getcomposer.org/76a7060ccb93902cd7576b67264ad91c8a2700e2/web/installer -O - -q | php -- --quiet
+  && wget -O composer-setup.php https://getcomposer.org/installer \
+  && php composer-setup.php --install-dir=/usr/local/bin --filename=composer
 
 EXPOSE 9000
 
